@@ -36,10 +36,9 @@ M.availability_username.form.getNode = function(json) {
     var strings = M.str.availability_username;
     var html = '<span class="availability-group"> <label>' + strings.label_username +
             ' <input name="username" type="text" style="width: 10em" title="' +
-            strings.title_username + '"/></label></span>';
+            strings.title_username + '"/> ' + strings.comma_separated + ' </label></span>';
     var node = Y.Node.create('<span>' + html + '</span>');
 
-	console.log('json',json);
     if (json.v !== undefined) {
         node.one('input').set('value', json.v);
     }
@@ -63,13 +62,11 @@ M.availability_username.form.getNode = function(json) {
 M.availability_username.form.fillValue = function(value, node) {
     var valueNode = node.one('input[name=username]');
 	value.v = valueNode.get('value');
-	console.log('fillValue',value.v);
 };
 
 M.availability_username.form.fillErrors = function(errors, node) {
     var value = {};
     this.fillValue(value, node);
-	console.log('fillErrors',value.v);
     if (value.v !== undefined && /^\s*$/.test(value.v)) {
         errors.push('availability_username:error_setusername');
     }
