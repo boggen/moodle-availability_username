@@ -77,7 +77,6 @@ class condition extends \core_availability\condition {
         // Just to be doubly sure it is a string.
 		$uservalue = (string)$uservalue;
 		$names = preg_split('/\s*,\s*/',$value);
-		error_log(json_encode($names));
         if( !in_array($uservalue,$names) ) {
             $fieldconditionmet = false;
         }
